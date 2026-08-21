@@ -1,0 +1,20 @@
+# executables
+btc
+
+# object files
+obj/
+
+# scripts
+generate_class.sh
+
+# config
+.claude
+.vscode
+.DS_Store
+
+# tests
+tests/
+input.txt
+
+# database
+data.csv
