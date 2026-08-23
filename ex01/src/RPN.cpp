@@ -43,9 +43,9 @@ int RPN::evaluate(const std::string &expr)
 				throw InvalidToken();
 		}
 		if (stack.size() < 2)
-			return -1;
-		int right = stack.back(); // take the last value
-		stack.pop_back(); // revome the last value
+			throw NotEnoughOperands();
+		int right = stack.back();
+		stack.pop_back();
 		int left = stack.back();
 		stack.pop_back();
 		int result;
@@ -58,6 +58,7 @@ int RPN::evaluate(const std::string &expr)
 				if (right == 0) throw DivisionByZero();
 				result = left / right;
 				break;
+			default: throw InvalidToken();
 		}
 		stack.push_back(result);
 	}
@@ -68,31 +69,27 @@ int RPN::evaluate(const std::string &expr)
 	return stack.back();
 }
 
-
 const char *RPN::InvalidToken::what() const throw()
 {
-	return "Error: Invalid token";
+	return "Invalid token";
 }
-
-
 
 const char *RPN::NotEnoughOperands::what() const throw()
 {
-	return "Error: not enough operands to perform operation";
+	return "Not enough operands to perform operation";
 }
 
 const char *RPN::TooManyOperands::what() const throw()
 {
-	return "Error: too many operands left over";
+	return "Too many operands left over";
 }
-
 
 const char *RPN::EmptyResult::what() const throw()
 {
-	return "Error: empty result";
+	return "Empty result";
 }
 
 const char *RPN::DivisionByZero::what() const throw()
 {
-	return "Error: division by 0 is not possible";
+	return "Division by 0 is not possible";
 }
