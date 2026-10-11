@@ -6,7 +6,6 @@ SRC_DIR  = src
 OBJ_DIR  = obj
 SRCS     = main.cpp BitcoinExchange.cpp
 
-SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJS     = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 all: $(OBJ_DIR) $(NAME)
