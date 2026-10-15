@@ -25,13 +25,13 @@ void BitcoinExchange::loadDatabase(const std::string& filename)
 		throw std::runtime_error("Error: could not open database");
 
 	std::string line;
-	std::getline(file, line); // skip header
+	std::getline(file, line);
 	while (std::getline(file, line))
 	{
 		size_t pos = line.find(',');
 		if (pos == std::string::npos)
 		{
-			std::cerr << "error" << std::endl; // TODO improve
+			std::cerr << "Error: invalid line in database" << std::endl;
 			continue;
 		}
 		std::string date = trim(line.substr(0, pos));
