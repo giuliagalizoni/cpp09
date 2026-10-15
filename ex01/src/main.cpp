@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << "exception: " << e.what() << std::endl;
+		std::cerr << "exception: " << e.what() << std::endl;
 	}
 	return 0;
 }
