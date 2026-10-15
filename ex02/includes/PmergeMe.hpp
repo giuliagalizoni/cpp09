@@ -18,6 +18,10 @@ class PmergeMe
 		std::deque<int> _deq;
 		double _time_vec;
 		double _time_deq;
+		char **_args;
+		int _count;
+		mutable size_t _cmp_vec;
+		mutable size_t _cmp_deq;
 
 		// PmergeMeVector.cpp
 		int get_key_vec(int i, int pairSize) const;
@@ -55,6 +59,9 @@ class PmergeMe
 		const std::deque<int>&  getDeq() const;
 		double getVecTime() const;
 		double getDeqTime() const;
+
+		size_t getVecComparisons() const;
+		size_t getDeqComparisons() const;
 };
 
 #endif

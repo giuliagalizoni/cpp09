@@ -31,19 +31,26 @@ int main(int argc, char** argv)
 	}
 
 	std::cout << "Before: ";
-	printSequence(p.getVec());
+	for (int i = 1; i < argc; i++)
+		std::cout << " " << argv[i];
+	std::cout << std::endl;
 
 	p.sort_vec();
 	p.sort_deq();
 
-	std::cout << "After:  ";
+	std::cout << "After (vec):  ";
 	printSequence(p.getVec());
+	std::cout << "After (deq):  ";
+	printSequence(p.getDeq());
 
 	std::cout << std::fixed << std::setprecision(5);
 	std::cout << "Time to process a range of " << p.getVec().size()
-	          << " elements with std::vector : " << p.getVecTime() << " us" << std::endl;
+				<< " elements with std::vector : " << p.getVecTime() << " us" << std::endl;
 	std::cout << "Time to process a range of " << p.getDeq().size()
-	          << " elements with std::deque  : " << p.getDeqTime() << " us" << std::endl;
+				<< " elements with std::deque  : " << p.getDeqTime() << " us" << std::endl;
+
+	std::cout << "Comparisons with std::vector : " << p.getVecComparisons() << std::endl;
+	std::cout << "Comparisons with std::deque  : " << p.getDeqComparisons() << std::endl;
 
 	return 0;
 }
