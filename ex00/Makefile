@@ -16,7 +16,7 @@ $(OBJ_DIR):
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp includes/BitcoinExchange.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

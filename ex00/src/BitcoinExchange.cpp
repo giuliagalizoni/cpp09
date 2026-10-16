@@ -52,7 +52,10 @@ void BitcoinExchange::loadDatabase(const std::string& filename)
 			std::cerr << "Error: invalid rate in database" << std::endl;
 			continue;
 		}
-		if (!isValidFormat(date))
+		if (!isValidFormat(date)
+			|| !isValidRange(std::atoi(date.substr(0, 4).c_str()),
+				std::atoi(date.substr(5, 2).c_str()),
+				std::atoi(date.substr(8, 2).c_str())))
 		{
 			std::cerr << "Error: invalid date in database" << std::endl;
 			continue;
