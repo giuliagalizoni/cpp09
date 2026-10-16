@@ -6,9 +6,6 @@
 # include <fstream>
 # include <iostream>
 # include <stdexcept>
-# include <cstdlib>
-# include <cctype>
-# include <cmath>
 
 class BitcoinExchange
 {

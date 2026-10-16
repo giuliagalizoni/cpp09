@@ -1,5 +1,9 @@
 #include "../includes/BitcoinExchange.hpp"
 
+# include <cstdlib>
+# include <cctype>
+# include <cmath>
+
 // Default constructor
 BitcoinExchange::BitcoinExchange() {}
 

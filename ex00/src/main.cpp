@@ -4,8 +4,7 @@ int main (int argc, char**argv)
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error: invalid number of arguments" << std::endl;
-		std::cout << "Usage: ./btc input.txt" << std::endl;
+		std::cerr << "Error: could not open file" << std::endl;
 		return 1;
 	}
 	try
