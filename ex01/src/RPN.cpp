@@ -1,5 +1,14 @@
 #include "RPN.hpp"
 
+#include <climits>
+
+static int checked(double value)
+{
+	if (value > INT_MAX || value < INT_MIN)
+		throw RPN::Overflow();
+	return static_cast<int>(value);
+}
+
 // Default constructor
 RPN::RPN() {}
 
@@ -18,6 +27,7 @@ RPN& RPN::operator=(const RPN& other)
 
 // Destructor
 RPN::~RPN() {}
+
 
 int RPN::evaluate(const std::string &expr)
 {
@@ -51,12 +61,12 @@ int RPN::evaluate(const std::string &expr)
 		int result;
 		switch (c)
 		{
-			case '+': result = left + right; break;
-			case '-': result = left - right; break;
-			case '*': result = left * right; break;
+			case '+': result = checked(static_cast<double>(left) + right); break;
+			case '-': result = checked(static_cast<double>(left) - right); break;
+			case '*': result = checked(static_cast<double>(left) * right); break;
 			case '/':
 				if (right == 0) throw DivisionByZero();
-				result = left / right;
+				result = checked(static_cast<double>(left) / right);
 				break;
 			default: throw InvalidToken();
 		}
@@ -92,4 +102,9 @@ const char *RPN::EmptyResult::what() const throw()
 const char *RPN::DivisionByZero::what() const throw()
 {
 	return "Division by 0 is not possible";
+}
+
+const char *RPN::Overflow::what() const throw()
+{
+	return "Overflow";
 }
